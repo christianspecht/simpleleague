@@ -8,10 +8,12 @@ if (isset($_GET['season_name']))
     $db = connect_db();
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query = $db->query("select * from seasons where season_name = '$season'");
+    $query = $db->prepare('select * from seasons where season_name = ?');
+    $query->bindParam(1, $season, PDO::PARAM_STR);
     $query->setFetchMode(PDO::FETCH_OBJ);
-       
-    while($row = $query->fetch()) {
+    $query->execute();
+    
+    foreach($query as $row) {
         echo $row->season_id ." ".$row->season_name;
     }
 }
