@@ -8,6 +8,13 @@ $LABEL_SEASON = "Season";
 $LABEL_TEAM = "Team";
 // ########################################
 
+
+// ########################################
+// OTHER SETTINGS
+// Properties for HTML tables, will be put into the <table> tag
+$HTML_TABLE_PROPERTIES = "border='1'";
+// ########################################
+
 function connect_db()
 {
     // ########################################
