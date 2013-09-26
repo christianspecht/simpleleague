@@ -6,7 +6,6 @@ if (isset($_GET['season_name']))
     $season = $_GET['season_name'];
     
     $db = connect_db();
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = $db->prepare('select * from seasons where season_name = ?');
     $query->bindParam(1, $season, PDO::PARAM_STR);
