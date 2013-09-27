@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2013 at 11:42 PM
+-- Generation Time: Sep 27, 2013 at 02:05 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -45,6 +45,19 @@ CREATE TABLE IF NOT EXISTS `seasons` (
   `season_name` varchar(50) NOT NULL,
   PRIMARY KEY (`season_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seasons_players`
+--
+
+CREATE TABLE IF NOT EXISTS `seasons_players` (
+  `season_id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  PRIMARY KEY (`season_id`,`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
