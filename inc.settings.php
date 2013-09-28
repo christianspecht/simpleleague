@@ -15,6 +15,8 @@ $LABEL_VS = "vs.";
 // OTHER SETTINGS
 // Properties for HTML tables, will be put into the <table> tag
 $HTML_TABLE_PROPERTIES = "border='1'";
+// additional properties for "schedule per season" table:
+$HTML_SCHEDULE_TABLE_PROPERTIES = "style='width:250px'";
 // ########################################
 
 function connect_db()

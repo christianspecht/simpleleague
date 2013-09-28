@@ -32,7 +32,7 @@ if (isset($_GET['season_name']))
                 echo "<p></p>";
             }
             
-            echo "<table $HTML_TABLE_PROPERTIES>
+            echo "<table $HTML_TABLE_PROPERTIES $HTML_SCHEDULE_TABLE_PROPERTIES>
                 <tr><td colspan='3' style='text-align:center;'><b>$LABEL_ROUND $row->round_number</b></td></tr>";
             
             if (!empty($row->description)) {
