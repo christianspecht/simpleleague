@@ -6,6 +6,8 @@
 $LABEL_PLAYER = "Player";
 $LABEL_SEASON = "Season";
 $LABEL_TEAM = "Team";
+$LABEL_ROUND = "Round";
+$LABEL_VS = "vs.";
 // ########################################
 
 

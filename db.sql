@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2013 at 02:05 AM
+-- Generation Time: Sep 28, 2013 at 09:30 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -25,6 +25,20 @@ USE `phpsimpleleague`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `games`
+--
+
+CREATE TABLE IF NOT EXISTS `games` (
+  `game_id` int(11) NOT NULL AUTO_INCREMENT,
+  `round_id` int(11) NOT NULL,
+  `player1_id` int(11) NOT NULL,
+  `player2_id` int(11) NOT NULL,
+  PRIMARY KEY (`game_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `players`
 --
 
@@ -32,6 +46,22 @@ CREATE TABLE IF NOT EXISTS `players` (
   `player_id` int(11) NOT NULL AUTO_INCREMENT,
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rounds`
+--
+
+CREATE TABLE IF NOT EXISTS `rounds` (
+  `round_id` int(11) NOT NULL AUTO_INCREMENT,
+  `season_id` int(11) NOT NULL,
+  `round_number` int(11) NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `finished` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`round_id`),
+  UNIQUE KEY `season_id` (`season_id`,`round_number`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
