@@ -33,10 +33,10 @@ if (isset($_GET['season_name']))
             }
             
             echo "<table $HTML_TABLE_PROPERTIES>
-                <tr><td colspan='3'>$LABEL_ROUND $row->round_number</td></tr>";
+                <tr><td colspan='3' style='text-align:center;'><b>$LABEL_ROUND $row->round_number</b></td></tr>";
             
             if (!empty($row->description)) {
-                echo "<tr><td colspan='3'>$row->description</td></tr>";
+                echo "<tr><td colspan='3' style='text-align:center;'>$row->description</td></tr>";
             }
         }
         
