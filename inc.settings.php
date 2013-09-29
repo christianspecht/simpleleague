@@ -12,6 +12,7 @@ $LABEL_NOGAME = "no game";
 $LABEL_POINTS = "Points";
 $LABEL_VICTORYPOINTS = "Victory Points";
 $LABEL_POINT_SEPARATOR = ":";
+$LABEL_RESULT = "Result";
 // ########################################
 
 

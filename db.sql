@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2013 at 10:22 PM
+-- Generation Time: Sep 30, 2013 at 12:29 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   `player2_points` int(11) NOT NULL DEFAULT '0',
   `player1_victorypoints` int(11) NOT NULL DEFAULT '0',
   `player2_victorypoints` int(11) NOT NULL DEFAULT '0',
+  `result_id` int(11) NOT NULL,
   PRIMARY KEY (`game_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
@@ -50,6 +51,18 @@ CREATE TABLE IF NOT EXISTS `players` (
   `player_id` int(11) NOT NULL AUTO_INCREMENT,
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE IF NOT EXISTS `results` (
+  `result_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`result_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
