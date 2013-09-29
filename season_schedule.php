@@ -7,12 +7,12 @@ if (isset($_GET['season_name']))
     
     $db = connect_db();
     
-    $sql = "select r.round_number, r.description, p1.player_name as player1, p2.player_name as player2
+    $sql = "select r.round_number, r.description, p1.player_name as player1_name, p2.player_name as player2_name, g.player1_id, g.player2_id
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
-            inner join players p1 on p1.player_id = g.player1_id
-            inner join players p2 on p2.player_id = g.player2_id
+            left join players p1 on p1.player_id = g.player1_id
+            left join players p2 on p2.player_id = g.player2_id
             where s.season_name = ?
             order by game_id";
 
@@ -40,10 +40,27 @@ if (isset($_GET['season_name']))
             }
         }
         
+        if ($row->player1_id == 0) {
+            $col1 = $LABEL_NOGAME;
+        } else {
+            $col1 = $row->player1_name;    
+        }
+        
+        if ($row->player1_id == 0 || $row->player2_id == 0) {
+            $col2 = "";
+        } else {
+            $col2 = $LABEL_VS;
+        }
+
+        if ($row->player2_id == 0) {
+            $col3 = $LABEL_NOGAME;
+        } else {
+            $col3 = $row->player2_name;    
+        }
         echo "<tr>
-            <td>$row->player1</td>
-            <td>$LABEL_VS</td>
-            <td>$row->player2</td>
+            <td>$col1</td>
+            <td>$col2</td>
+            <td>$col3</td>
             </tr>";
         
         $last_round_number = $row->round_number;
