@@ -9,6 +9,9 @@ $LABEL_TEAM = "Team";
 $LABEL_ROUND = "Round";
 $LABEL_VS = "vs.";
 $LABEL_NOGAME = "no game";
+$LABEL_POINTS = "Points";
+$LABEL_VICTORYPOINTS = "Victory Points";
+$LABEL_POINT_SEPARATOR = ":";
 // ########################################
 
 
