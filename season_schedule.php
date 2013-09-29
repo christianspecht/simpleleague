@@ -28,15 +28,15 @@ if (isset($_GET['season_name']))
         if ($last_round_number != $row->round_number) {
             
             if ($last_round_number != 0) {
-                echo "</table>";
-                echo "<p></p>";
+                echo "</table>\n";
+                echo "<p></p>\n";
             }
             
             echo "<table $HTML_TABLE_PROPERTIES $HTML_SCHEDULE_TABLE_PROPERTIES>
-                <tr><td colspan='3' style='text-align:center;'><b>$LABEL_ROUND $row->round_number</b></td></tr>";
+<tr><td colspan='3' style='text-align:center;'><b>$LABEL_ROUND $row->round_number</b></td></tr>\n";
             
             if (!empty($row->description)) {
-                echo "<tr><td colspan='3' style='text-align:center;'>$row->description</td></tr>";
+                echo "<tr><td colspan='3' style='text-align:center;'>$row->description</td></tr>\n";
             }
         }
         
@@ -58,16 +58,16 @@ if (isset($_GET['season_name']))
             $col3 = $row->player2_name;    
         }
         echo "<tr>
-            <td>$col1</td>
-            <td>$col2</td>
-            <td>$col3</td>
-            </tr>";
+    <td>$col1</td>
+    <td>$col2</td>
+    <td>$col3</td>
+</tr>\n";
         
         $last_round_number = $row->round_number;
     }
     
     if ($last_round_number > 0) {
-        echo "</table>";
+        echo "</table>\n";
     }
 }
 

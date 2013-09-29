@@ -21,17 +21,17 @@ if (isset($_GET['season_name']))
     $query->execute();
     
     echo "<table $HTML_TABLE_PROPERTIES>
-        <tr>
-            <td><b>$LABEL_PLAYER</b></td>
-            <td><b>$LABEL_TEAM</b></td>
-        </tr>";
+<tr>
+    <td><b>$LABEL_PLAYER</b></td>
+    <td><b>$LABEL_TEAM</b></td>
+</tr>\n";
     
     foreach($query as $row) {
         
         echo "<tr>
-            <td>$row->player_name</td>
-            <td>$row->team_name</td>
-        </tr>";
+    <td>$row->player_name</td>
+    <td>$row->team_name</td>
+</tr>\n";
     }
     
     echo "</table>";
