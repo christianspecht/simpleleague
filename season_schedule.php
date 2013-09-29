@@ -13,8 +13,8 @@ if (isset($_GET['season_name']))
             inner join games g on g.round_id = r.round_id
             left join players p1 on p1.player_id = g.player1_id
             left join players p2 on p2.player_id = g.player2_id
-            where s.season_name = ?
-            order by game_id";
+            where s.season_name = ? and r.round_number > 0
+            order by r.round_number, game_id";
 
     $query = $db->prepare($sql);
     $query->bindParam(1, $season, PDO::PARAM_STR);
