@@ -10,7 +10,8 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
 
     $sql = "select p1.player_name as player1_name, p2.player_name as player2_name, 
                 g.player1_victorypoints, g.player2_victorypoints,
-                g.player1_points, g.player2_points
+                g.player1_points, g.player2_points,
+                g.player1_id, g.player2_id
             from seasons s
             inner join rounds r on s.season_id = r.season_id
             inner join games g on r.round_id = g.round_id
@@ -35,17 +36,55 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     
     foreach($query as $row) {
 
+        if ($row->player1_id == 0) {
+            $name1 = $LABEL_NOGAME;
+        } else {
+            $name1 = $row->player1_name;    
+        }
+        
+        if ($row->player2_id == 0) {
+            $name2 = $LABEL_NOGAME;
+        } else {
+            $name2 = $row->player2_name;    
+        }
+        
+        if ($row->player1_id == 0 || $row->player2_id == 0 ) {
+            
+            $name_vs = "";
+            
+            $vp1 = "";
+            $vp_vs = "";
+            $vp2 = "";
+
+            $p1 = "";
+            $p_vs = "";
+            $p2 = "";
+            
+        } else {
+            
+            $name_vs = $LABEL_VS;
+            
+            $vp1 = $row->player1_victorypoints;
+            $vp_vs = $LABEL_POINT_SEPARATOR;
+            $vp2 = $row->player2_victorypoints;
+
+            $p1 = $row->player1_points;
+            $p_vs = $LABEL_POINT_SEPARATOR;
+            $p2 = $row->player2_points;
+            
+        }
+
         echo "<tr>
-    <td>$row->player1_name</td>
-    <td>$LABEL_VS</td>
-    <td>$row->player2_name</td>
-    <td>$row->player1_victorypoints</td>
-    <td>$LABEL_POINT_SEPARATOR</td>
-    <td>$row->player2_victorypoints</td>
+    <td>$name1</td>
+    <td>$name_vs</td>
+    <td>$name2</td>
+    <td>$vp1</td>
+    <td>$vp_vs</td>
+    <td>$vp2</td>
     <td></td>
-    <td>$row->player1_points</td>
-    <td>$LABEL_POINT_SEPARATOR</td>
-    <td>$row->player2_points</td>
+    <td>$p1</td>
+    <td>$p_vs</td>
+    <td>$p2</td>
 </tr>\n";        
         
     }
