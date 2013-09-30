@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2013 at 12:29 AM
+-- Generation Time: Sep 30, 2013 at 08:24 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   `player2_points` int(11) NOT NULL DEFAULT '0',
   `player1_victorypoints` int(11) NOT NULL DEFAULT '0',
   `player2_victorypoints` int(11) NOT NULL DEFAULT '0',
-  `result_id` int(11) NOT NULL,
+  `result_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`game_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
