@@ -11,13 +11,15 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     $sql = "select p1.player_name as player1_name, p2.player_name as player2_name, 
                 g.player1_victorypoints, g.player2_victorypoints,
                 g.player1_points, g.player2_points,
-                g.player1_id, g.player2_id, re.description as result
+                g.player1_id, g.player2_id,
+                re1.description as result1, re2.description as result2
             from seasons s
             inner join rounds r on s.season_id = r.season_id
             inner join games g on r.round_id = g.round_id
             left join players p1 on p1.player_id = g.player1_id
             left join players p2 on p2.player_id = g.player2_id
-            left join results re on re.result_id = g.result_id
+            left join results re1 on re1.result_id = g.player1_result_id
+            left join results re2 on re2.result_id = g.player2_result_id
             where s.season_name = ? and r.round_number = ?
             order by g.game_id";
     
@@ -76,7 +78,12 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             $p_vs = $LABEL_POINT_SEPARATOR;
             $p2 = $row->player2_points;
             
-            $res = $row->result;
+            // display the result of the higher scoring player
+            if ($p1 > $p2) {
+                $res = $row->result1;    
+            } else {
+                $res = $row->result2;    
+            }
             
         }
 
