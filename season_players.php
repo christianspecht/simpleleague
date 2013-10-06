@@ -20,21 +20,10 @@ if (isset($_GET['season_name']))
     $query->setFetchMode(PDO::FETCH_OBJ);
     $query->execute();
     
-    echo "<table $HTML_TABLE_PROPERTIES>
-<tr>
-    <td><b>$LABEL_PLAYER</b></td>
-    <td><b>$LABEL_TEAM</b></td>
-</tr>\n";
+    $data = new Settings();
     
-    foreach($query as $row) {
-        
-        echo "<tr>
-    <td>$row->player_name</td>
-    <td>$row->team_name</td>
-</tr>\n";
-    }
-    
-    echo "</table>";
+    echo $tpl->render('season_players', $data);
+
 }
 
 ?>
