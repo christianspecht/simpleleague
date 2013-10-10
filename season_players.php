@@ -17,13 +17,13 @@ if (isset($_GET['season_name']))
     
     $query = $db->prepare($sql);
     $query->bindParam(1, $season, PDO::PARAM_STR);
-    $query->setFetchMode(PDO::FETCH_OBJ);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     
     $data = new Settings();
+    $data->rows = $query->fetchAll();
     
     echo $tpl->render('season_players', $data);
-
 }
 
 ?>
