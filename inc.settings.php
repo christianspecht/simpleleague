@@ -46,8 +46,7 @@ function connect_db()
     return $db;
 }
 
-
-require '/Mustache/Autoloader.php';
+require 'Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 
 $tpl = new Mustache_Engine(array(
