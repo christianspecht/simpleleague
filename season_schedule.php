@@ -39,6 +39,31 @@ if (isset($_GET['season_name']))
             
             $lastround = $round;
         }
+        
+        $tmp = array();
+        
+        if ($row['player1_id'] == 0) {
+            $tmp['player1_name'] = $data->label_nogame;
+        } else {
+            $tmp['player1_name'] = $row['player1_name'];
+        }
+
+        if ($row['player2_id'] == 0) {
+            $tmp['player2_name'] = $data->label_nogame;
+        } else {
+            $tmp['player2_name'] = $row['player2_name'];
+        }
+        
+        if ($row['player1_id'] != 0 && $row['player2_id'] != 0) {
+            $tmp['vs'] = $data->label_vs;
+        }
+
+        
+        // get the key of the last inserted item (http://stackoverflow.com/a/10044716/6884)
+        end($data->rounds);
+        $lastkey = key($data->rounds);
+        
+        $data->rounds[$lastkey]['games'][] = $tmp;
     }
     
     echo $tpl->render('season_schedule', $data);
