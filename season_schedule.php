@@ -18,57 +18,30 @@ if (isset($_GET['season_name']))
 
     $query = $db->prepare($sql);
     $query->bindParam(1, $season, PDO::PARAM_STR);
-    $query->setFetchMode(PDO::FETCH_OBJ);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
-
-    $last_round_number = 0;
     
-    foreach($query as $row) {
+    $data = new Settings();
+    $data->rounds = array();
+    
+    $lastround = 0;
+ 
+    while($row = $query->fetch()) {
         
-        if ($last_round_number != $row->round_number) {
+        $round = $row['round_number'];
+        
+        if ($round != $lastround) {
             
-            if ($last_round_number != 0) {
-                echo "</table>\n";
-                echo "<p></p>\n";
-            }
+            $tmp = array();
+            $tmp['round_number'] = $round;
+            $tmp['description'] = $row['description'];
+            $data->rounds[] = $tmp;
             
-            echo "<table $HTML_TABLE_PROPERTIES $HTML_SCHEDULE_TABLE_PROPERTIES>
-<tr><td colspan='3' style='text-align:center;'><b>$LABEL_ROUND $row->round_number</b></td></tr>\n";
-            
-            if (!empty($row->description)) {
-                echo "<tr><td colspan='3' style='text-align:center;'>$row->description</td></tr>\n";
-            }
+            $lastround = $round;
         }
-        
-        if ($row->player1_id == 0) {
-            $col1 = $LABEL_NOGAME;
-        } else {
-            $col1 = $row->player1_name;    
-        }
-        
-        if ($row->player1_id == 0 || $row->player2_id == 0) {
-            $col2 = "";
-        } else {
-            $col2 = $LABEL_VS;
-        }
-
-        if ($row->player2_id == 0) {
-            $col3 = $LABEL_NOGAME;
-        } else {
-            $col3 = $row->player2_name;    
-        }
-        echo "<tr>
-    <td>$col1</td>
-    <td>$col2</td>
-    <td>$col3</td>
-</tr>\n";
-        
-        $last_round_number = $row->round_number;
     }
     
-    if ($last_round_number > 0) {
-        echo "</table>\n";
-    }
-}
+    echo $tpl->render('season_schedule', $data);
+ }
 
 ?>
