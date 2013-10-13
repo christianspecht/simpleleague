@@ -1,21 +1,22 @@
 {{#rounds}}
 <table {{html_table_properties}} {{html_schedule_table_properties}}>
-<tr>
-    <td colspan='3' style='text-align:center;'><b>{{label_round}} {{round_number}}</b></td>
-</tr>
+    <tr>
+        <td colspan='3' style='text-align:center;'><b>{{label_round}} {{round_number}}</b></td>
+    </tr>
 {{#description}}
-<tr>
-    <td colspan='3' style='text-align:center;'>{{description}}</td>
-</tr>
+    <tr>
+        <td colspan='3' style='text-align:center;'>{{description}}</td>
+    </tr>
 {{/description}}
 {{#games}}
-<tr>
-    <td>{{player1_name}}</td>
-    <td>{{vs}}</td>
-    <td>{{player2_name}}</td>
-</tr>
+    <tr>
+        <td>{{player1_name}}</td>
+        <td>{{vs}}</td>
+        <td>{{player2_name}}</td>
+    </tr>
 {{/games}}
 </table>
+
 <p></p>
 
 {{/rounds}}
