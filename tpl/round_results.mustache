@@ -1,0 +1,24 @@
+<table {{html_table_properties}}>
+    <tr style='font-weight:bold;'>
+        <td colspan='3'>{{label_round}} 2</td>
+        <td colspan='3'>{{label_victorypoints}}</td>
+        <td></td>
+        <td colspan='3'>{{label_points}}</td>
+        <td>{{label_result}}</td>
+    </tr>
+{{#results}}
+    <tr>
+        <td>{{player1_name}}</td>
+        <td>{{vs}}</td>
+        <td>{{player2_name}}</td>
+        <td>{{player1_victorypoints}}</td>
+        <td>{{separator}}</td>
+        <td>{{player2_victorypoints}}</td>
+        <td></td>
+        <td>{{player1_points}}</td>
+        <td>{{separator}}</td>
+        <td>{{player2_points}}</td>
+        <td>{{result}}</td>
+    </tr>
+{{/results}}
+</table>

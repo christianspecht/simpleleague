@@ -26,85 +26,48 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     $query = $db->prepare($sql);
     $query->bindParam(1, $season, PDO::PARAM_STR);
     $query->bindParam(2, $round, PDO::PARAM_INT);
-    $query->setFetchMode(PDO::FETCH_OBJ);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     
-    echo "<table $HTML_TABLE_PROPERTIES>\n";
-    echo "<tr style='font-weight:bold;'>
-    <td colspan='3'>$LABEL_ROUND $round</td>
-    <td colspan='3'>$LABEL_VICTORYPOINTS</td>
-    <td></td>
-    <td colspan='3'>$LABEL_POINTS</td>
-    <td>$LABEL_RESULT</td>
-</tr>\n";
+    $results = $query->fetchAll();
     
-    foreach($query as $row) {
-
-        if ($row->player1_id == 0) {
-            $name1 = $LABEL_NOGAME;
-        } else {
-            $name1 = $row->player1_name;    
+    $data = new Settings();
+    
+    foreach($results as &$row) {
+        
+        if ($row['player1_id'] == 0) {
+            $row['player1_name'] = $data->label_nogame;
         }
         
-        if ($row->player2_id == 0) {
-            $name2 = $LABEL_NOGAME;
-        } else {
-            $name2 = $row->player2_name;    
+        if ($row['player2_id'] == 0) {
+            $row['player2_name'] = $data->label_nogame;
         }
         
-        if ($row->player1_id == 0 || $row->player2_id == 0 ) {
-            
-            $name_vs = "";
-            
-            $vp1 = "";
-            $vp_vs = "";
-            $vp2 = "";
+        $row['vs'] = $data->label_vs;
+        $row['separator'] = $data->label_point_separator;
 
-            $p1 = "";
-            $p_vs = "";
-            $p2 = "";
-            
-            $res = "";
+        if ($row['player1_id'] == 0 || $row['player2_id'] == 0) {
+            $row['vs'] = "";
+            $row['separator'] = "";
+            $row['player1_victorypoints'] = "";
+            $row['player2_victorypoints'] = "";
+            $row['player1_points'] = "";
+            $row['player2_points'] = "";
             
         } else {
-            
-            $name_vs = $LABEL_VS;
-            
-            $vp1 = $row->player1_victorypoints;
-            $vp_vs = $LABEL_POINT_SEPARATOR;
-            $vp2 = $row->player2_victorypoints;
-
-            $p1 = $row->player1_points;
-            $p_vs = $LABEL_POINT_SEPARATOR;
-            $p2 = $row->player2_points;
-            
+          
             // display the result of the higher scoring player
-            if ($p1 > $p2) {
-                $res = $row->result1;    
+            if ($row['player1_points'] > $row['player2_points']) {
+                $row['result'] = $row['result1'];
             } else {
-                $res = $row->result2;    
+                $row['result'] = $row['result2'];
             }
-            
         }
-
-        echo "<tr>
-    <td>$name1</td>
-    <td>$name_vs</td>
-    <td>$name2</td>
-    <td>$vp1</td>
-    <td>$vp_vs</td>
-    <td>$vp2</td>
-    <td></td>
-    <td>$p1</td>
-    <td>$p_vs</td>
-    <td>$p2</td>
-    <td>$res</td>
-</tr>\n";        
-        
     }
     
-    echo "</table>\n";
+    $data->results = $results;
     
+    echo $tpl->render('round_results', $data);
 }
 
 ?>
