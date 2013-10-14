@@ -29,12 +29,13 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     $query = $db->prepare($sql);
     $query->bindParam(':season', $season, PDO::PARAM_STR);
     $query->bindParam(':round', $round, PDO::PARAM_INT);
-    $query->setFetchMode(PDO::FETCH_OBJ);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     
-    foreach ($query as $row) {
-        echo "$row->round_number / $row->player_name <br>";
-    }
+    $data = new Settings();
+    $data->rows = $query->fetchAll();
+    
+    echo $tpl->render('season_results', $data);
 }
 
 ?>

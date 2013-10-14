@@ -13,8 +13,10 @@ Class Settings {
     public $label_nogame = "no game";
     public $label_points = "Points";
     public $label_victorypoints = "Victory Points";
+    public $label_victorypoints_difference = "Diff.";
     public $label_point_separator = ":";
     public $label_result = "Result";
+    public $label_number_of_games = "No. of games";
     // ########################################
     
     // ########################################
