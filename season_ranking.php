@@ -61,8 +61,12 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             $results[$pid] = $tmp;
         }
         
-        if ($row['opponent_id'] != 0){
+        if ($row['opponent_id'] != 0) {
             $results[$pid]['games']++;
+        }
+        
+        if ($results[$pid]['diff'] > 0) {
+            $results[$pid]['diff'] = "+".$results[$pid]['diff'];
         }
         
     }
