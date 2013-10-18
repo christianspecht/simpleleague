@@ -9,7 +9,7 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     
     $db = connect_db();
 
-    $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id
+    $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_id as opponent_id, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
@@ -17,7 +17,7 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             where s.season_name = :season and r.round_number <= :round
             and r.finished = 1
             union
-            select r.round_number, p.player_id, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_victorypoints, g.player2_result_id
+            select r.round_number, p.player_id, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_id, g.player1_victorypoints, g.player2_result_id
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
@@ -47,7 +47,6 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             $results[$pid]['vp'] = $results[$pid]['vp'] + $row['vp'];
             $results[$pid]['opponent_vp'] = $results[$pid]['opponent_vp'] + $row['opponent_vp'];
             $results[$pid]['diff'] = $results[$pid]['vp'] - $results[$pid]['opponent_vp'];
-            $results[$pid]['games']++;
             
         } else {
         
@@ -58,9 +57,14 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             $tmp['vp'] = $row['vp'];
             $tmp['opponent_vp'] = $row['opponent_vp'];
             $tmp['diff'] = $tmp['vp'] - $tmp['opponent_vp'];
-            $tmp['games'] = 1;
+            $tmp['games'] = 0;
             $results[$pid] = $tmp;
         }
+        
+        if ($row['opponent_id'] != 0){
+            $results[$pid]['games']++;
+        }
+        
     }
     
     usort($results, "sort_ranking");
