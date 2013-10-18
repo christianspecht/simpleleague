@@ -9,20 +9,20 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     
     $db = connect_db();
 
-    $sql = "select r.round_number, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_victorypoints * -1 as opponent_vp, g.player1_result_id as result_id
+    $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
             inner join players p on p.player_id = g.player1_id
-            where s.season_name = :season and r.round_number between 1 and :round
+            where s.season_name = :season and r.round_number <= :round
             and r.finished = 1
             union
-            select r.round_number, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_victorypoints * -1, g.player2_result_id
+            select r.round_number, p.player_id, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_victorypoints, g.player2_result_id
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
             inner join players p on p.player_id = g.player2_id
-            where s.season_name = :season and r.round_number between 1 and :round
+            where s.season_name = :season and r.round_number <= :round
             and r.finished = 1
             order by round_number";
     
@@ -32,8 +32,39 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     
+    $rows = $query->fetchAll();    
+    
     $data = new Settings();
-    $data->rows = $query->fetchAll();
+    $results = array();
+    
+    foreach($rows as $row) {
+        
+        $pid = $row['player_id'];
+        
+        if (isset($results[$pid])) {
+            
+            $results[$pid]['points'] = $results[$pid]['points'] + $row['points'];
+            $results[$pid]['vp'] = $results[$pid]['vp'] + $row['vp'];
+            $results[$pid]['opponent_vp'] = $results[$pid]['opponent_vp'] + $row['opponent_vp'];
+            $results[$pid]['diff'] = $results[$pid]['vp'] - $results[$pid]['opponent_vp'];
+            $results[$pid]['games']++;
+            
+        } else {
+        
+            $tmp = array();
+            $tmp['player_id'] = $row['player_id'];
+            $tmp['player_name'] = $row['player_name'];
+            $tmp['points'] = $row['points'];
+            $tmp['vp'] = $row['vp'];
+            $tmp['opponent_vp'] = $row['opponent_vp'];
+            $tmp['diff'] = $tmp['vp'] - $tmp['opponent_vp'];
+            $tmp['games'] = 1;
+            $results[$pid] = $tmp;
+        }
+    }
+    
+    usort($results, "sort_ranking");
+    $data->results = $results;
     
     echo $tpl->render('season_results', $data);
 }

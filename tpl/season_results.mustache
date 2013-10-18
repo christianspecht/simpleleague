@@ -3,8 +3,20 @@
         <td></td>
         <td></td>
         <td>{{label_number_of_games}}</td>
-        <td>{{label_victorypoints}}</td>
+        <td colspan="3">{{label_victorypoints}}</td>
         <td>{{label_victorypoints_difference}}</td>
         <td>{{label_points}}</td>
     </tr>
+{{#results}}
+    <tr>
+        <td>{{rank}}</td>
+        <td>{{player_name}}</td>
+        <td>{{games}}</td>
+        <td>{{vp}}</td>
+        <td>{{label_point_separator}}</td>
+        <td>{{opponent_vp}}</td>
+        <td>{{diff}}</td>
+        <td>{{points}}</td>
+    </tr>
+{{/results}}
 </table>

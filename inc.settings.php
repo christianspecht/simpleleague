@@ -48,6 +48,26 @@ function connect_db()
     return $db;
 }
 
+// sorting function for ranking lists 
+function sort_ranking($a, $b) {
+    
+    // order by points first
+    $sort= $b['points'] - $a['points'];
+    
+    // if points are equal, order by difference
+    if ($sort == 0) {
+        $sort= $b['diff'] - $a['diff'];
+    }
+
+    // if differences are equal as well, order by victory points
+    if ($sort == 0) {
+        $sort= $b['vp'] - $a['vp'];
+    }
+    
+    return $sort;
+}
+
+
 require 'Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 
