@@ -66,7 +66,7 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     usort($results, "sort_ranking");
     $data->results = $results;
     
-    echo $tpl->render('season_results', $data);
+    echo $tpl->render('season_ranking', $data);
 }
 
 ?>
