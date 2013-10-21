@@ -40,4 +40,15 @@ Class Settings {
     // ########################################
 }
 
+
+// ################################################################################
+// Optional: custom callback function for escaping double-mustache variables.
+// Defaults to htmlspecialchars like Mustache.php's default behaviour
+// (see https://github.com/bobthecow/mustache.php/wiki#escape)
+// You can change it here if you need anything special
+// ################################################################################
+function custom_escape($value) {
+    return htmlspecialchars($value);
+}
+
 ?>
