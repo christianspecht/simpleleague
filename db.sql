@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2013 at 10:20 PM
+-- Generation Time: Oct 21, 2013 at 11:01 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `phpsimpleleague`
 --
-CREATE DATABASE IF NOT EXISTS `phpsimpleleague` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `phpsimpleleague` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `phpsimpleleague`;
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   `player1_result_id` int(11) NOT NULL DEFAULT '0',
   `player2_result_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`game_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `games` (
 
 CREATE TABLE IF NOT EXISTS `players` (
   `player_id` int(11) NOT NULL AUTO_INCREMENT,
-  `player_name` varchar(50) NOT NULL,
+  `player_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`player_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 CREATE TABLE IF NOT EXISTS `results` (
   `result_id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(50) NOT NULL,
+  `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`result_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -76,11 +76,11 @@ CREATE TABLE IF NOT EXISTS `rounds` (
   `round_id` int(11) NOT NULL AUTO_INCREMENT,
   `season_id` int(11) NOT NULL,
   `round_number` int(11) NOT NULL,
-  `description` varchar(50) DEFAULT NULL,
+  `description` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `finished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`round_id`),
   UNIQUE KEY `season_id` (`season_id`,`round_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `rounds` (
 
 CREATE TABLE IF NOT EXISTS `seasons` (
   `season_id` int(11) NOT NULL AUTO_INCREMENT,
-  `season_name` varchar(50) NOT NULL,
+  `season_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`season_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `seasons_players` (
   `player_id` int(11) NOT NULL,
   `team_id` int(11) NOT NULL,
   PRIMARY KEY (`season_id`,`player_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -115,9 +115,9 @@ CREATE TABLE IF NOT EXISTS `seasons_players` (
 
 CREATE TABLE IF NOT EXISTS `teams` (
   `team_id` int(11) NOT NULL AUTO_INCREMENT,
-  `team_name` varchar(50) NOT NULL,
+  `team_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`team_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
