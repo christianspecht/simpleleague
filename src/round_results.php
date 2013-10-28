@@ -32,6 +32,7 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     $results = $query->fetchAll();
     
     $data = new Settings();
+    $data->round_number = $round;
     
     foreach($results as &$row) {
         
