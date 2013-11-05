@@ -5,7 +5,7 @@ Class DbSettings {
     // ########################################
     // DEFINE DATABASE SETTINGS HERE
     public $db_host = "localhost";
-    public $db_name = "phpsimpleleague";
+    public $db_name = "simpleleague";
     public $db_user = "root";
     public $db_pass = "";
     // ######################################## 

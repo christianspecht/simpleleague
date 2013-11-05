@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2013 at 10:59 PM
+-- Generation Time: Nov 05, 2013 at 06:06 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `phpsimpleleague_demo`
+-- Database: `simpleleague_demo`
 --
-CREATE DATABASE IF NOT EXISTS `phpsimpleleague_demo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `phpsimpleleague_demo`;
+CREATE DATABASE IF NOT EXISTS `simpleleague_demo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `simpleleague_demo`;
 
 -- --------------------------------------------------------
 
