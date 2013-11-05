@@ -33,8 +33,8 @@ You need a web server with [PHP](http://php.net/) and a [MySQL](http://www.mysql
 To install SimpleLeague, just:
 
 1. Copy all the `.php` files onto your server
-2. Create a new MySQL database and execute the content of [db.sql](#) to create the tables
-3. Change the database connection settings in [inc.config.php](#) *(server, database, user and password)*
+2. Create a new MySQL database and execute the content of [db.sql](https://bitbucket.org/christianspecht/simpleleague/src/tip/db.sql) to create the tables
+3. Change the database connection settings in [inc.config.php](https://bitbucket.org/christianspecht/simpleleague/src/tip/src/inc.config.php) *(server, database, user and password)*
 4. *Optional: Edit the other constants in the config file if you want to edit the terminology used in the table headers (like **Player**, **Season** and so on).*
 
 To integrate it with your site, use whatever is provided by the technology your site was built with, for example:
@@ -53,7 +53,7 @@ The following text gives a short explanation of SimpleLeague's core concepts and
 
 [TODO]
 
-You can use [this SQL script](#) to create a database with sample data.
+You can use [this SQL script](https://bitbucket.org/christianspecht/simpleleague/src/tip/db_sample_data.sql) to create a database with sample data.
 
 Here is a list of the available URLs, with examples how the rendered tables look like.  
 The example tables use the sample data from above.
@@ -131,7 +131,7 @@ SimpleLeague makes use of the following open source projects:
 
 ### License
 
-SimpleLeague is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/simpleleague/raw/tip/License.txt) for details.
+SimpleLeague is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/simpleleague/src/tip/license.txt) for details.
 
 ---
 
