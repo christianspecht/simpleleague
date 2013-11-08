@@ -18,7 +18,7 @@ I needed a simple way to insert database-driven HTML tables with results and ran
 There weren't any plugins available for that CMS which provided anything like this, so I had to build it myself...but I wanted to do it with the least effort possible *(because I knew that I would need to enter only a few results per year)*.
 
 That's why I decided to build a "technology-agnostic" and **very** minimalistic solution:  
-PHP Simple League just consists of a few PHP files that spit out raw HTML tables. You need a server with [PHP](http://php.net/) and [MySQL](http://www.mysql.com/) to install it, but you can integrate it in websites built with any technology, as long as you are able to include content from external URLs.  
+SimpleLeague just consists of a few PHP files that spit out raw HTML tables. You need a server with [PHP](http://php.net/) and [MySQL](http://www.mysql.com/) to install it, but you can integrate it in websites built with any technology, as long as you are able to include content from external URLs.  
 There isn't even an admin screen, and it's unlikely that there will ever be one.  
 To enter players, results etc., you just edit the database directly in [phpMyAdmin](http://www.phpmyadmin.net/) *(or whatever tool your server provides)*.  
 Yes, it's **that** minimalistic.  
@@ -56,9 +56,9 @@ The following text gives a short explanation of SimpleLeague's core concepts and
 You can use [this SQL script](https://bitbucket.org/christianspecht/simpleleague/src/tip/db_sample_data.sql) to create a database with sample data.
 
 Here is a list of the available URLs, with examples how the rendered tables look like.  
-The example tables use the sample data from above.
+The example tables use the sample data from the script above.
 
-#### List of players (and their teams) for a season:
+### List of players (and their teams) for a season:
 
 URL:
 
@@ -66,10 +66,10 @@ URL:
 
 Example:
 
-[TODO]
+<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_players.php?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_players.php?season_name=2013">here</a></iframe>
 
 
-#### Schedule of all rounds and games for a season:
+### Schedule of all rounds and games for a season:
 
 URL:
 
@@ -77,10 +77,10 @@ URL:
 
 Example:
 
-[TODO]
+<iframe frameborder="0" height="400" src="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013">here</a></iframe>
 
 
-#### Results for a single round:
+### Results for a single round:
 
 *Note: only visible when the round is **finished**.  
 A round is considered finished when the `finished` column in the `rounds` table is set to `1`.*
@@ -91,10 +91,10 @@ URL:
 
 Example:
 
-[TODO]
+<iframe frameborder="0" height="120" src="http://simpleleaguedemo.christianspecht.de/round_results.php?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/round_results.php?season_name=2013&round_number=2">here</a></iframe>
 
 
-#### Current ranking:
+### Current ranking:
 
 *Note: only incorporates the results of finished rounds where the round number is equal or smaller than the specified one.  
 A round is considered finished when the `finished` column in the `rounds` table is set to `1`.*
@@ -105,7 +105,7 @@ URL:
 
 Example:
 
-[TODO]
+<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_ranking.php?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking.php?season_name=2013&round_number=2">here</a></iframe>
 
 
 ---
