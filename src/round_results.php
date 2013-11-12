@@ -12,7 +12,8 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
                 g.player1_victorypoints, g.player2_victorypoints,
                 g.player1_points, g.player2_points,
                 g.player1_id, g.player2_id,
-                re1.description as result1, re2.description as result2
+                re1.description as result1, re2.description as result2,
+                r.finished
             from seasons s
             inner join rounds r on s.season_id = r.season_id
             inner join games g on r.round_id = g.round_id
@@ -47,8 +48,12 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
         $row['vs'] = $data->label_vs;
         $row['separator'] = $data->label_point_separator;
 
-        if ($row['player1_id'] == 0 || $row['player2_id'] == 0) {
-            $row['vs'] = "";
+        if ($row['finished'] == 0 || $row['player1_id'] == 0 || $row['player2_id'] == 0) {
+            
+            if ($row['player1_id'] == 0 || $row['player2_id'] == 0) {
+                $row['vs'] = "";
+            }
+            
             $row['separator'] = "";
             $row['player1_victorypoints'] = "";
             $row['player2_victorypoints'] = "";
