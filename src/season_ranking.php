@@ -9,21 +9,19 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     
     $db = connect_db();
 
-    $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_id as opponent_id, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id
+    $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_id as opponent_id, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id, r.finished
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
             inner join players p on p.player_id = g.player1_id
             where s.season_name = :season and r.round_number <= :round
-            and r.finished = 1
             union
-            select r.round_number, p.player_id, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_id, g.player1_victorypoints, g.player2_result_id
+            select r.round_number, p.player_id, p.player_name, g.player2_points, g.player2_victorypoints, g.player1_id, g.player1_victorypoints, g.player2_result_id, r.finished
             from seasons s
             inner join rounds r on r.season_id = s.season_id
             inner join games g on g.round_id = r.round_id
             inner join players p on p.player_id = g.player2_id
             where s.season_name = :season and r.round_number <= :round
-            and r.finished = 1
             order by round_number";
     
     $query = $db->prepare($sql);
@@ -61,7 +59,7 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
             $results[$pid] = $tmp;
         }
         
-        if ($row['opponent_id'] != 0) {
+        if ($row['opponent_id'] != 0 && $row['finished'] != 0) {
             $results[$pid]['games']++;
         }
         
