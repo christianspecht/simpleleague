@@ -37,6 +37,10 @@ Class Settings {
     public $html_table_properties = "border='1'";
     // additional properties for "schedule per season" table:
     public $html_schedule_table_properties = "style='width:250px'";
+    
+    // properties for headline row in each table
+    public $html_table_headline_properties = "style='font-weight:bold;'";
+    
     // ########################################
 }
 
