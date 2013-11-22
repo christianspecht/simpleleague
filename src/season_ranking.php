@@ -39,32 +39,36 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
         
         $pid = $row['player_id'];
         
-        if (isset($results[$pid])) {
+        if ($row['finished'] != 0) {
             
-            $results[$pid]['points'] = $results[$pid]['points'] + $row['points'];
-            $results[$pid]['vp'] = $results[$pid]['vp'] + $row['vp'];
-            $results[$pid]['opponent_vp'] = $results[$pid]['opponent_vp'] + $row['opponent_vp'];
-            $results[$pid]['diff'] = $results[$pid]['vp'] - $results[$pid]['opponent_vp'];
-            
-        } else {
-        
-            $tmp = array();
-            $tmp['player_id'] = $row['player_id'];
-            $tmp['player_name'] = $row['player_name'];
-            $tmp['points'] = $row['points'];
-            $tmp['vp'] = $row['vp'];
-            $tmp['opponent_vp'] = $row['opponent_vp'];
-            $tmp['diff'] = $tmp['vp'] - $tmp['opponent_vp'];
-            $tmp['games'] = 0;
-            $results[$pid] = $tmp;
-        }
-        
-        if ($row['opponent_id'] != 0 && $row['finished'] != 0) {
-            $results[$pid]['games']++;
-        }
-        
-        if ($results[$pid]['diff'] > 0) {
-            $results[$pid]['diff'] = "+".$results[$pid]['diff'];
+            if (isset($results[$pid])) {
+
+                $results[$pid]['points'] = $results[$pid]['points'] + $row['points'];
+                $results[$pid]['vp'] = $results[$pid]['vp'] + $row['vp'];
+                $results[$pid]['opponent_vp'] = $results[$pid]['opponent_vp'] + $row['opponent_vp'];
+                $results[$pid]['diff'] = $results[$pid]['vp'] - $results[$pid]['opponent_vp'];
+
+            } else {
+
+                $tmp = array();
+                $tmp['player_id'] = $row['player_id'];
+                $tmp['player_name'] = $row['player_name'];
+                $tmp['points'] = $row['points'];
+                $tmp['vp'] = $row['vp'];
+                $tmp['opponent_vp'] = $row['opponent_vp'];
+                $tmp['diff'] = $tmp['vp'] - $tmp['opponent_vp'];
+                $tmp['games'] = 0;
+                $results[$pid] = $tmp;
+            }
+         
+            if ($row['opponent_id'] != 0) {
+                $results[$pid]['games']++;
+            }
+
+            if ($results[$pid]['diff'] > 0) {
+                $results[$pid]['diff'] = "+".$results[$pid]['diff'];
+            }
+
         }
         
     }
