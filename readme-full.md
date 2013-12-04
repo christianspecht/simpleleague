@@ -32,10 +32,11 @@ You need a web server with [PHP](http://php.net/) and a [MySQL](http://www.mysql
 
 To install SimpleLeague, just:
 
-1. Copy all the `.php` files onto your server
-2. Create a new MySQL database and execute the content of [db.sql](https://bitbucket.org/christianspecht/simpleleague/src/tip/db.sql) to create the tables
-3. Change the database connection settings in [inc.config.php](https://bitbucket.org/christianspecht/simpleleague/src/tip/src/inc.config.php) *(server, database, user and password)*
-4. *Optional: Edit the other constants in the config file if you want to edit the terminology used in the table headers (like **Player**, **Season** and so on).*
+0. Download the current ZIP file from the download page *(see "Links" section above)*
+0. Copy the content of the `src` folder onto your server
+0. Create a new MySQL database and execute the content of [`db.sql`](https://bitbucket.org/christianspecht/simpleleague/src/tip/db.sql) to create the tables
+0. Change the database connection settings in [`inc.config.php`](https://bitbucket.org/christianspecht/simpleleague/src/tip/src/inc.config.php) *(server, database, user and password)*
+0. *Optional: Edit the other constants in the config file if you want to edit the terminology used in the table headers (like **Player**, **Season** and so on).*
 
 To integrate it with your site, use whatever is provided by the technology your site was built with, for example:
 
@@ -112,10 +113,22 @@ Example:
 
 ## Development
 
-Export settings for phpMyAdmin to create `db.sql`:
+**Export settings for phpMyAdmin to create `db.sql`:**
 
 - structure only *(no data!)*
 - `AUTO_INCREMENT` off
+
+**How to make a release:**
+
+Prerequisites:
+
+- Windows
+- The script expects the `7za.exe` from the [7-Zip Command Line Version](http://www.7-zip.org/download.html) in the parent folder
+
+Steps:
+
+1. Increase the version number in `version-number.bat`
+2. Run `release.bat` (this will create a zip file in the `release` subfolder)
 
 ---
 
