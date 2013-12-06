@@ -4,6 +4,11 @@ require_once 'inc.settings.php';
 if (isset($_GET['season_name']))
 {
     $season = $_GET['season_name'];
+    $round = 0;
+    
+    if (isset($_GET['round_number'])) {
+        $round = $_GET['round_number'];
+    }
     
     $db = connect_db();
     
@@ -13,11 +18,23 @@ if (isset($_GET['season_name']))
             inner join games g on g.round_id = r.round_id
             left join players p1 on p1.player_id = g.player1_id
             left join players p2 on p2.player_id = g.player2_id
-            where s.season_name = ? and r.round_number > 0
-            order by r.round_number, game_id";
+            where s.season_name = ?";
+    
+    if ($round > 0) {
+        $sql .= " and r.round_number = ?"; 
+    } else {
+        $sql .= " and r.round_number > 0"; 
+    }
+    
+    $sql .= " order by r.round_number, game_id";
 
     $query = $db->prepare($sql);
     $query->bindParam(1, $season, PDO::PARAM_STR);
+    
+    if ($round > 0) {
+        $query->bindParam(2, $round, PDO::PARAM_INT);
+    }
+    
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();
     

@@ -76,7 +76,12 @@ URL:
 
 	/season_schedule.php?season_name=2013
 
-Example:
+Optional: To display a single round, pass the round number as the second parameter:
+
+	/season_schedule.php?season_name=2013&round_number=2
+
+Example:  
+*(without the "round number" parameter)*
 
 <iframe frameborder="0" height="400" src="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013">here</a></iframe>
 
