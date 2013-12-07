@@ -32,6 +32,11 @@ function sort_ranking($a, $b) {
         $sort= $b['vp'] - $a['vp'];
     }
     
+    // if victory points are equal AS WELL, order by player name
+    if ($sort == 0) {
+        $sort = strcasecmp($a['player_name'], $b['player_name']);
+    }
+    
     return $sort;
 }
 
