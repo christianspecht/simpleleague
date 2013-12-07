@@ -34,6 +34,7 @@ To install SimpleLeague, just:
 
 0. Download the current ZIP file from the download page *(see "Links" section above)*
 0. Copy the content of the `src` folder onto your server
+0. Set the permissions of the `cache` subfolder to `777`
 0. Create a new MySQL database and execute the content of [`db.sql`](https://bitbucket.org/christianspecht/simpleleague/src/tip/db.sql) to create the tables
 0. Change the database connection settings in [`inc.config.php`](https://bitbucket.org/christianspecht/simpleleague/src/tip/src/inc.config.php) *(server, database, user and password)*
 0. *Optional: Edit the other constants in the config file if you want to edit the terminology used in the table headers (like **Player**, **Season** and so on).*
