@@ -53,7 +53,23 @@ For example URLs, see below.
 
 The following text gives a short explanation of SimpleLeague's core concepts and how they link to the database.  
 
-[TODO]
+**Bold** words refer to a table of the same name.
+
+The "core data" of SimpleLeague are **players** and (optional) **teams**.  
+Think of something like [StarCraft](http://en.wikipedia.org/wiki/StarCraft): there are two "players" *(actual humans)*, but their "teams" are Terrans, Zerg or Protoss.
+
+There are one or more **seasons**.  
+A season has a name *(like "2013")* and consists of one or more **rounds**.
+
+Each round has a number and can optionally have a name *(something like "Winter 2013")*.  
+A round consists of one or more **games**.
+
+Each game has exactly two players facing each other.  
+*(or just one player if he has no opponent - in this case, just set the opponent's `player_id` to `0`)*  
+The players score *points* and *victory points*.  
+Think of the way scores in sports leagues work: the actual game result is something like 13 : 8 *victory points (goals, touchdowns...whatever)*, and the winner gets 2 *points* for winning, which directly affect his position in the league rankings. So the position in the rankings is mainly determined by the amount of "league points", the victory points only matter when there's a draw in league points.  
+
+---
 
 You can use [this SQL script](https://bitbucket.org/christianspecht/simpleleague/src/tip/db_sample_data.sql) to create a database with sample data.
 
