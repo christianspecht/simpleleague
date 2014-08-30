@@ -116,6 +116,9 @@ Example:
 
 <iframe frameborder="0" height="120" src="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2">here</a></iframe>
 
+Optional: Append the `show_unfinished` parameter to display results even if the round is still unfinished *(to check results before setting the round to finished)*:
+
+	/round_results/?season_name=2013&round_number=2&show_unfinished=1
 
 ### Current ranking:
 
@@ -130,6 +133,9 @@ Example:
 
 <iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2">here</a></iframe>
 
+Optional: Append the `show_unfinished` parameter to display results of unfinished rounds as well *(to check results before setting the round to finished)*:
+
+	/season_ranking/?season_name=2013&round_number=2&show_unfinished=1
 
 ### Statistics
 

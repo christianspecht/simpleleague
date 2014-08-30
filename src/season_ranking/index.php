@@ -6,7 +6,13 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
 {
     $season = $_GET['season_name'];
     $round = $_GET['round_number'];
-    
+
+    $show_unfinished = 0;
+    if (isset($_GET['show_unfinished']))
+    {
+        $show_unfinished = $_GET['show_unfinished'];
+    }
+
     $db = connect_db();
 
     $sql = "select r.round_number, p.player_id, p.player_name, g.player1_points as points, g.player1_victorypoints as vp, g.player2_id as opponent_id, g.player2_victorypoints as opponent_vp, g.player1_result_id as result_id, r.finished
@@ -39,7 +45,9 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
         
         $pid = $row['player_id'];
         
-        if ($row['finished'] != 0) {
+        $finished = ($show_unfinished == 1 || $row['finished'] == 1);
+        
+        if ($finished == 1) {
             
             if (isset($results[$pid])) {
 
