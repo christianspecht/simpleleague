@@ -80,27 +80,27 @@ The example tables use the sample data from the script above.
 
 URL:
 
-	/season_players.php?season_name=2013
+	/season_players/?season_name=2013
 
 Example:
 
-<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_players.php?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_players.php?season_name=2013">here</a></iframe>
+<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013">here</a></iframe>
 
 
 ### Schedule of all rounds and games for a season:
 
 URL:
 
-	/season_schedule.php?season_name=2013
+	/season_schedule/?season_name=2013
 
 Optional: To display a single round, pass the round number as the second parameter:
 
-	/season_schedule.php?season_name=2013&round_number=2
+	/season_schedule/?season_name=2013&round_number=2
 
 Example:  
 *(without the "round number" parameter)*
 
-<iframe frameborder="0" height="400" src="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_schedule.php?season_name=2013">here</a></iframe>
+<iframe frameborder="0" height="400" src="http://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013">here</a></iframe>
 
 
 ### Results for a single round:
@@ -110,11 +110,11 @@ A round is considered finished when the `finished` column in the `rounds` table 
 
 URL:
 
-	/round_results.php?season_name=2013&round_number=2
+	/round_results/?season_name=2013&round_number=2
 
 Example:
 
-<iframe frameborder="0" height="120" src="http://simpleleaguedemo.christianspecht.de/round_results.php?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/round_results.php?season_name=2013&round_number=2">here</a></iframe>
+<iframe frameborder="0" height="120" src="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2">here</a></iframe>
 
 
 ### Current ranking:
@@ -124,11 +124,11 @@ A round is considered finished when the `finished` column in the `rounds` table 
 
 URL:
 
-	/season_ranking.php?season_name=2013&round_number=2
+	/season_ranking/?season_name=2013&round_number=2
 
 Example:
 
-<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_ranking.php?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking.php?season_name=2013&round_number=2">here</a></iframe>
+<iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2">here</a></iframe>
 
 
 ---

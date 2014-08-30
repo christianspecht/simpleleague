@@ -1,5 +1,5 @@
 <?php
-require_once 'inc.settings.php';
+require_once '../inc.settings.php';
 
 if (isset($_GET['season_name']) && isset($_GET['round_number']))
 {
