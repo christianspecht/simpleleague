@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2013 at 06:06 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Generation Time: Aug 30, 2014 at 07:04 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `simpleleague_demo`
 --
-CREATE DATABASE IF NOT EXISTS `simpleleague_demo` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `simpleleague_demo`;
 
 -- --------------------------------------------------------
 
@@ -130,6 +128,7 @@ INSERT INTO `rounds` (`round_id`, `season_id`, `round_number`, `description`, `f
 CREATE TABLE IF NOT EXISTS `seasons` (
   `season_id` int(11) NOT NULL AUTO_INCREMENT,
   `season_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `no_statistics` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`season_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
@@ -137,8 +136,8 @@ CREATE TABLE IF NOT EXISTS `seasons` (
 -- Dumping data for table `seasons`
 --
 
-INSERT INTO `seasons` (`season_id`, `season_name`) VALUES
-(1, '2013');
+INSERT INTO `seasons` (`season_id`, `season_name`, `no_statistics`) VALUES
+(1, '2013', 0);
 
 -- --------------------------------------------------------
 

@@ -131,6 +131,12 @@ Example:
 <iframe frameborder="0" height="150" src="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2">here</a></iframe>
 
 
+### Statistics
+
+In the future, SimpleLeague will also include some features which generate statistics *(something like: all-time ranking of players, across all seasons)*.
+
+This doesn't exist yet, but there's already a setting *(for future use)* to **exclude** certain seasons from these statistics: just set `no_statistics` in the `seasons` table to `false`.
+
 ---
 
 ## Development
