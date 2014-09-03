@@ -1,15 +1,15 @@
 {{{html_header}}}
 <!-- {{generated_by}} -->
 <table {{html_table_properties}}>
-    <tr>
-        <td></td>
+    <tr bgcolor='{{html_crosstab_headline_bgcolor}}'>
+        <td><sub>{{label_crosstab_home}}</sub> \ <sup>{{label_crosstab_guest}}</sup></td>
         {{#players}}
         <td>{{player_name}}</td>
         {{/players}}
     </tr>
     {{#lines}}
     <tr>
-        <td>{{player_name}}</td>
+        <td bgcolor='{{html_crosstab_headline_bgcolor}}'>{{player_name}}</td>
         {{#results}}
         <td>{{points1}}{{#points2}}{{label_point_separator}}{{points2}} ({{round_number}}){{/points2}}</td>
         {{/results}}

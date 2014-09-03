@@ -29,6 +29,8 @@ Class Settings {
     public $label_point_separator = ":";
     public $label_result = "Result";
     public $label_number_of_games = "No. of games";
+    public $label_crosstab_home = "Home";
+    public $label_crosstab_guest = "Guest";
     // ########################################
     
     // ########################################
@@ -40,6 +42,9 @@ Class Settings {
     
     // properties for headline row in each table
     public $html_table_headline_properties = "style='font-weight:bold;'";
+    
+    // cross table, background color for headlines
+    public $html_crosstab_headline_bgcolor = "lightgrey";
     
     // header and footer (will be displayed above and below each table)
     public $html_header = "<br>";
