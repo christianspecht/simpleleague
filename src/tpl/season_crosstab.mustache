@@ -1,0 +1,19 @@
+{{{html_header}}}
+<!-- {{generated_by}} -->
+<table {{html_table_properties}}>
+    <tr>
+        <td></td>
+        {{#players}}
+        <td>{{player_name}}</td>
+        {{/players}}
+    </tr>
+    {{#lines}}
+    <tr>
+        <td>{{player_name}}</td>
+        {{#results}}
+        <td>{{points1}}{{#points2}}{{label_point_separator}}{{points2}} ({{round_number}}){{/points2}}</td>
+        {{/results}}
+    </tr>
+    {{/lines}}
+</table>
+{{{html_footer}}}
