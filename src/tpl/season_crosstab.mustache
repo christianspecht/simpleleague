@@ -1,17 +1,18 @@
+<style type="text/css">.sl-ct{text-align:center;}</style>
 {{{html_header}}}
 <!-- {{generated_by}} -->
 <table {{html_table_properties}}>
     <tr bgcolor='{{html_crosstab_headline_bgcolor}}'>
         <td><sub>{{label_crosstab_home}}</sub> \ <sup>{{label_crosstab_guest}}</sup></td>
         {{#players}}
-        <td>{{player_name}}</td>
+        <td class='sl-ct'>{{player_name}}</td>
         {{/players}}
     </tr>
     {{#lines}}
     <tr>
         <td bgcolor='{{html_crosstab_headline_bgcolor}}'>{{player_name}}</td>
         {{#results}}
-        <td>{{points1}}{{#points2}}{{label_point_separator}}{{points2}} ({{round_number}}){{/points2}}</td>
+        <td class='sl-ct'>{{points1}}{{#points2}}{{label_point_separator}}{{points2}} ({{round_number}}){{/points2}}</td>
         {{/results}}
     </tr>
     {{/lines}}
