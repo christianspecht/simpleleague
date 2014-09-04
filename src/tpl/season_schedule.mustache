@@ -1,8 +1,8 @@
 {{{html_header}}}
 <!-- {{generated_by}} -->
 {{#rounds}}
-<table {{html_table_properties}} {{html_schedule_table_properties}}>
-    <tr {{html_table_headline_properties}}>
+<table{{#html_table_properties}} {{html_table_properties}}{{/html_table_properties}}{{#html_schedule_table_properties}} {{html_schedule_table_properties}}{{/html_schedule_table_properties}}>
+    <tr{{#html_table_headline_properties}} {{html_table_headline_properties}}{{/html_table_headline_properties}}>
         <td colspan='3' style='text-align:center;'>{{label_round}} {{round_number}}</td>
     </tr>
 {{#description}}
