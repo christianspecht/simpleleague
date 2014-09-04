@@ -137,6 +137,22 @@ Optional: Append the `show_unfinished` parameter to display results of unfinishe
 
 	/season_ranking/?season_name=2013&round_number=2&show_unfinished=1
 
+### Cross table per season:
+
+*Notes:*
+
+- *only incorporates the results of finished rounds.  
+A round is considered finished when the `finished` column in the `rounds` table is set to `1`.*
+- *In each game, the player mentioned first is considered the "home" player (the second player is the "guest" player)*
+
+URL:
+
+	/season_crosstab/?season_name=2013
+
+Example:
+
+<iframe frameborder="0" height="420" src="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013">here</a></iframe>
+
 ### Statistics
 
 In the future, SimpleLeague will also include some features which generate statistics *(something like: all-time ranking of players, across all seasons)*.
