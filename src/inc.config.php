@@ -29,8 +29,11 @@ Class Settings {
     public $label_point_separator = ":";
     public $label_result = "Result";
     public $label_number_of_games = "No. of games";
+    public $label_draw = "Draw";
+    public $label_etc = "etc.";
     public $label_crosstab_home = "Home";
     public $label_crosstab_guest = "Guest";
+    public $label_crosstab_wins = " wins";
     // ########################################
     
     // ########################################
