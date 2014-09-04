@@ -28,7 +28,9 @@ if (isset($_GET['season_name']))
     $sql2 = "select p1.player_name as player1_name, p2.player_name as player2_name, 
                 g.player1_victorypoints, g.player2_victorypoints,
                 g.player1_id, g.player2_id,
+                re1.result_id as result1_id, re2.result_id as result2_id,
                 re1.description as result1, re2.description as result2,
+                re1.description_short as result1_short, re2.description_short as result2_short,
                 r.round_number
             from seasons s
             inner join rounds r on s.season_id = r.season_id
@@ -39,6 +41,7 @@ if (isset($_GET['season_name']))
             left join results re2 on re2.result_id = g.player2_result_id
             where s.season_name = :season
             and r.finished = 1
+            and g.player2_id <> 0
             order by p1.player_name, p2.player_name";
             
     $query2 = $db->prepare($sql2);
@@ -79,9 +82,27 @@ if (isset($_GET['season_name']))
                 foreach($line['results'] as &$result) {
                 
                     if ($result['player_id'] == $game['player2_id']) {
+                    
                         $result['points1'] = $game['player1_victorypoints'];
                         $result['points2'] = $game['player2_victorypoints'];
                         $result['round_number'] = $game['round_number'];
+                        
+                        /*
+                        determine the winner
+                        - If one player has a result != 0 and the other player has a result == 0, the first player wins
+                        - If both players have the same result, but it's not 0, then it's a draw
+                        */
+                        if ($game['result1_id'] != 0 && $game['result2_id'] == 0) {
+                            // player 1 wins
+                            $result['result'] = $game['result1_short'];
+                        } elseif ($game['result1_id'] == 0 && $game['result2_id'] != 0) {
+                            // player 2 wins
+                            $result['result'] = $game['result2_short'];
+                        } elseif ($game['result1_id'] != 0 && $game['result2_id'] != 0 && $game['result1_id'] == $game['result2_id']) {
+                            // draw
+                            $result['result'] = $game['result1_short'];
+                        }
+                        
                         break;
                     }
                 }

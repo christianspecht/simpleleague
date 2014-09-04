@@ -12,7 +12,7 @@
     <tr>
         <td bgcolor='{{html_crosstab_headline_bgcolor}}'>{{player_name}}</td>
         {{#results}}
-        <td class='sl-ct'>{{points1}}{{#points2}}{{label_point_separator}}{{points2}} ({{round_number}}){{/points2}}</td>
+        <td class='sl-ct'>{{points1}}{{#result}}{{label_point_separator}}{{points2}} ({{result}}{{round_number}}){{/result}}</td>
         {{/results}}
     </tr>
     {{/lines}}

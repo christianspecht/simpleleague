@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2014 at 07:04 PM
+-- Generation Time: Sep 04, 2014 at 05:59 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -82,6 +82,7 @@ INSERT INTO `players` (`player_id`, `player_name`) VALUES
 CREATE TABLE IF NOT EXISTS `results` (
   `result_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`result_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
@@ -89,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `results` (
 -- Dumping data for table `results`
 --
 
-INSERT INTO `results` (`result_id`, `description`) VALUES
-(1, 'Draw'),
-(2, 'Minor Win'),
-(3, 'Major Win');
+INSERT INTO `results` (`result_id`, `description`, `description_short`) VALUES
+(1, 'Draw', 'D'),
+(2, 'Win', 'W'),
+(3, 'Major Win', 'M');
 
 -- --------------------------------------------------------
 
