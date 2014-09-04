@@ -73,6 +73,8 @@ if (isset($_GET['season_name']))
     }
     
     // loop all games and put results into the table from step 1
+    $resultlist = array();
+    
     foreach($games as $game) {
     
         foreach ($lines as &$line) {
@@ -92,18 +94,48 @@ if (isset($_GET['season_name']))
                         - If one player has a result != 0 and the other player has a result == 0, the first player wins
                         - If both players have the same result, but it's not 0, then it's a draw
                         */
+                        $resultlist_new = array();
+                        
                         if ($game['result1_id'] != 0 && $game['result2_id'] == 0) {
                             // player 1 (the "home" player") wins
                             $result['result'] = $game['result1_short'];
                             $result['bgcolor'] = $data->html_bgcolor_win;
+                            
+                            $resultlist_new['id'] = $game['result1_id'];
+                            $resultlist_new['short'] = $game['result1_short'];
+                            $resultlist_new['desc'] = $game['result1'];
+                            
                         } elseif ($game['result1_id'] == 0 && $game['result2_id'] != 0) {
                             // player 2 (the "guest") wins
                             $result['result'] = $game['result2_short'];
                             $result['bgcolor'] = $data->html_bgcolor_loss; // use the color for loss, because the "home" player loses
+                            
+                            $resultlist_new['id'] = $game['result2_id'];
+                            $resultlist_new['short'] = $game['result2_short'];
+                            $resultlist_new['desc'] = $game['result2'];
+                            
                         } elseif ($game['result1_id'] != 0 && $game['result2_id'] != 0 && $game['result1_id'] == $game['result2_id']) {
                             // draw
                             $result['result'] = $game['result1_short'];
                             $result['bgcolor'] = $data->html_bgcolor_draw;
+                            
+                            $resultlist_new['id'] = $game['result1_id'];
+                            $resultlist_new['short'] = $game['result1_short'];
+                            $resultlist_new['desc'] = $game['result1'];
+                        }
+                        
+                        // save the result description (only once per result) for the explanation below the cross table
+                        if (isset($resultlist_new['short'])) {
+                            $exists = 0;
+                            foreach($resultlist as $resultlist_item) {
+                                if ($resultlist_item['id'] == $resultlist_new['id']) {
+                                    $exists = 1;
+                                    break;
+                                }
+                            }
+                            if (!$exists) {
+                                $resultlist[] = $resultlist_new;
+                            }
                         }
                         
                         break;
@@ -117,6 +149,7 @@ if (isset($_GET['season_name']))
     
     $data->players = $players;
     $data->lines = $lines;
+    $data->resultlist = $resultlist;
     
     echo $tpl->render('season_crosstab', $data);
 }
