@@ -2,7 +2,7 @@
 {{{html_header}}}
 <!-- {{generated_by}} -->
 <table {{html_table_properties}}>
-    <tr bgcolor='{{html_crosstab_headline_bgcolor}}'>
+    <tr bgcolor='{{html_bgcolor_crosstab_headline}}'>
         <td><sub>{{label_crosstab_home}}</sub>&nbsp;\&nbsp;<sup>{{label_crosstab_guest}}</sup></td>
         {{#players}}
         <td class='sl-ct'>{{player_name}}</td>
@@ -10,9 +10,9 @@
     </tr>
     {{#lines}}
     <tr>
-        <td bgcolor='{{html_crosstab_headline_bgcolor}}'>{{player_name}}</td>
+        <td bgcolor='{{html_bgcolor_crosstab_headline}}'>{{player_name}}</td>
         {{#results}}
-        <td class='sl-ct'>{{points1}}{{#result}}{{label_point_separator}}{{points2}} ({{result}}{{round_number}}){{/result}}</td>
+        <td class='sl-ct'{{#bgcolor}} bgcolor='{{bgcolor}}'{{/bgcolor}}>{{points1}}{{#result}}{{label_point_separator}}{{points2}} ({{result}}{{round_number}}){{/result}}</td>
         {{/results}}
     </tr>
     {{/lines}}

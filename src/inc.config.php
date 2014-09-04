@@ -43,8 +43,11 @@ Class Settings {
     // properties for headline row in each table
     public $html_table_headline_properties = "style='font-weight:bold;'";
     
-    // cross table, background color for headlines
-    public $html_crosstab_headline_bgcolor = "lightgrey";
+    // CSS background colors for HTML tables
+    public $html_bgcolor_win = "lightgreen";
+    public $html_bgcolor_loss = "red";
+    public $html_bgcolor_draw = "yellow";
+    public $html_bgcolor_crosstab_headline = "lightgrey";
     
     // header and footer (will be displayed above and below each table)
     public $html_header = "<br>";

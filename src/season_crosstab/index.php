@@ -93,14 +93,17 @@ if (isset($_GET['season_name']))
                         - If both players have the same result, but it's not 0, then it's a draw
                         */
                         if ($game['result1_id'] != 0 && $game['result2_id'] == 0) {
-                            // player 1 wins
+                            // player 1 (the "home" player") wins
                             $result['result'] = $game['result1_short'];
+                            $result['bgcolor'] = $data->html_bgcolor_win;
                         } elseif ($game['result1_id'] == 0 && $game['result2_id'] != 0) {
-                            // player 2 wins
+                            // player 2 (the "guest") wins
                             $result['result'] = $game['result2_short'];
+                            $result['bgcolor'] = $data->html_bgcolor_loss; // use the color for loss, because the "home" player loses
                         } elseif ($game['result1_id'] != 0 && $game['result2_id'] != 0 && $game['result1_id'] == $game['result2_id']) {
                             // draw
                             $result['result'] = $game['result1_short'];
+                            $result['bgcolor'] = $data->html_bgcolor_draw;
                         }
                         
                         break;
