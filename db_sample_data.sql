@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2014 at 05:59 PM
+-- Generation Time: Sep 05, 2014 at 06:40 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -82,7 +82,7 @@ INSERT INTO `players` (`player_id`, `player_name`) VALUES
 CREATE TABLE IF NOT EXISTS `results` (
   `result_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`result_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
