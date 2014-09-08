@@ -53,6 +53,7 @@ Class Settings {
     public $html_bgcolor_loss = "red";
     public $html_bgcolor_draw = "yellow";
     public $html_bgcolor_crosstab_headline = "lightgrey";
+    public $html_bgcolor_allresults_empty = "lightgrey";
     
     // header and footer (will be displayed above and below each table)
     public $html_header = "<br>";

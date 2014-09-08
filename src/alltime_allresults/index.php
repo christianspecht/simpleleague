@@ -2,6 +2,19 @@
 
 require_once '../inc.settings.php';
 
+// return the cell color depending on the game result
+function allresults_cellcolor($data, $player_result_id, $opponent_result_id) {
+
+    if ($player_result_id == $opponent_result_id) {
+        return $data->html_bgcolor_draw;
+    } elseif ($player_result_id > 0) {
+        return $data->html_bgcolor_win;
+    } else {
+        return $data->html_bgcolor_loss;
+    }
+}
+
+
 $blank = ""; // content for blank cell
 
 $db = connect_db();
@@ -23,7 +36,8 @@ $players = $query1->fetchAll();
 
 // Query 2: all games from all seasons
 $sql2 = "select g.game_id, s.season_name, s.season_id, r.round_number, r.finished,
-        g.player1_id, g.player2_id, re1.description_short as result1, re2.description_short as result2
+        g.player1_id, g.player2_id, g.player1_result_id, g.player2_result_id, 
+        re1.description_short as result1, re2.description_short as result2
         from games g
         inner join rounds r on g.round_id = r.round_id
         inner join seasons s on r.season_id = s.season_id
@@ -109,6 +123,7 @@ foreach($games as $game) {
         foreach($rows as &$row) {
             $tmp = array();
             $tmp['result'] = "";
+            $tmp['bgcolor'] = $data->html_bgcolor_allresults_empty;
             $tmp['season_id'] = $game['season_id'];
             $tmp['round_number'] = $game['round_number'];
             $row['results'][] = $tmp;
@@ -138,6 +153,7 @@ foreach($games as $game) {
                 foreach($row['results'] as &$result) {
                     if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
                         $result['result'] = $data->label_home_short . $game['result1'];
+                        $result['bgcolor'] = allresults_cellcolor($data, $game['player1_result_id'], $game['player2_result_id']);
                         break;
                     }
                 }
@@ -147,6 +163,7 @@ foreach($games as $game) {
                 foreach($row['results'] as &$result) {
                     if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
                         $result['result'] = $data->label_guest_short . $game['result2'];
+                        $result['bgcolor'] = allresults_cellcolor($data, $game['player2_result_id'], $game['player1_result_id']);
                         break;
                     }
                 }
@@ -154,7 +171,6 @@ foreach($games as $game) {
         }
     }
 }
-
 
 $data->seasons = $seasons;
 $data->rounds = $rounds;
