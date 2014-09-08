@@ -29,6 +29,8 @@ Class Settings {
     public $label_point_separator = ":";
     public $label_result = "Result";
     public $label_number_of_games = "No. of games";
+    public $label_win = "Win";
+    public $label_loss = "Loss";
     public $label_draw = "Draw";
     public $label_etc = "etc.";
     public $label_home = "Home";
