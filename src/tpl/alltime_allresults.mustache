@@ -6,12 +6,14 @@
         {{#seasons}}
         <td{{#colspan}} colspan='{{colspan}}'{{/colspan}}>{{season_name}}</td>
         {{/seasons}}
+        <td align='left'>{{label_season}}</td>
     </tr>
     <tr align='center'>
         <td align='left'>{{label_round}}</td>
         {{#rounds}}
         <td>{{round_number}}</td>
         {{/rounds}}
+        <td align='left'>{{label_round}}</td>
     </tr>
 {{#rows}}
     <tr align='center'>
@@ -19,6 +21,7 @@
         {{#results}}
         <td{{#bgcolor}} bgcolor='{{bgcolor}}'{{/bgcolor}}>{{result}}</td>
         {{/results}}
+        <td align='left'>{{player_name}}</td>
     </tr>
 {{/rows}}
 </table>
