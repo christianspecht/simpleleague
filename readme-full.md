@@ -153,11 +153,27 @@ Example:
 
 <iframe frameborder="0" height="420" src="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013">here</a></iframe>
 
-### Statistics
+## Statistics
 
-In the future, SimpleLeague will also include some features which generate statistics *(something like: all-time ranking of players, across all seasons)*.
+SimpleLeague also includes some features which generate statistics across all seasons.  
+There's a setting to **exclude** certain seasons from these statistics: just set `no_statistics` in the `seasons` table to `false`.
 
-This doesn't exist yet, but there's already a setting *(for future use)* to **exclude** certain seasons from these statistics: just set `no_statistics` in the `seasons` table to `false`.
+### All-time results across all seasons
+
+*Notes:*
+
+- *only incorporates the results of finished rounds.  
+A round is considered finished when the `finished` column in the `rounds` table is set to `1`.*
+- *In each game, the player mentioned first is considered the "home" player (the second player is the "guest" player)*
+
+URL:
+
+	/alltime_allresults/
+
+Example:
+
+<iframe frameborder="0" height="500" src="http://simpleleaguedemo.christianspecht.de/alltime_allresults" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/alltime_allresults/">here</a></iframe>
+
 
 ---
 
