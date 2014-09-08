@@ -37,7 +37,8 @@ $players = $query1->fetchAll();
 // Query 2: all games from all seasons
 $sql2 = "select g.game_id, s.season_name, s.season_id, r.round_number, r.finished,
         g.player1_id, g.player2_id, g.player1_result_id, g.player2_result_id, 
-        re1.description_short as result1, re2.description_short as result2
+        re1.description_short as result1, re2.description_short as result2,
+        re1.description as result1_desc, re2.description as result2_desc
         from games g
         inner join rounds r on g.round_id = r.round_id
         inner join seasons s on r.season_id = s.season_id
@@ -143,17 +144,25 @@ $seasons[] = $current_season;
 
 
 // 2. loop the games again, insert results
+$resultlist = array();
 foreach($games as $game) {
 
     if ($game['finished']) {
 
         foreach($rows as &$row) {
         
+            $resultlist_new = array();
+        
             if ($game['player1_id'] == $row['player_id'] && $game['player2_id'] != 0) {
                 foreach($row['results'] as &$result) {
                     if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
                         $result['result'] = $data->label_home_short . $game['result1'];
                         $result['bgcolor'] = allresults_cellcolor($data, $game['player1_result_id'], $game['player2_result_id']);
+                        
+                        $resultlist_new['id'] = $game['player1_result_id'];
+                        $resultlist_new['short'] = $game['result1'];
+                        $resultlist_new['desc'] = $game['result1_desc'];
+                        
                         break;
                     }
                 }
@@ -164,10 +173,30 @@ foreach($games as $game) {
                     if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
                         $result['result'] = $data->label_guest_short . $game['result2'];
                         $result['bgcolor'] = allresults_cellcolor($data, $game['player2_result_id'], $game['player1_result_id']);
+                        
+                        $resultlist_new['id'] = $game['player2_result_id'];
+                        $resultlist_new['short'] = $game['result2'];
+                        $resultlist_new['desc'] = $game['result2_desc'];
+                        
                         break;
                     }
                 }
             }
+            
+            if (isset($resultlist_new['id'])) {
+                $exists = 0;
+                foreach($resultlist as $resultlist_item) {
+                    if ($resultlist_item['id'] == $resultlist_new['id']) {
+                        $exists = 1;
+                        break;
+                    }
+                }
+                if (!$exists) {
+                    $resultlist[] = $resultlist_new;
+                }
+
+            }
+            
         }
     }
 }
@@ -175,6 +204,7 @@ foreach($games as $game) {
 $data->seasons = $seasons;
 $data->rounds = $rounds;
 $data->rows = $rows;
+$data->resultlist = $resultlist;
 
 echo $tpl->render('alltime_allresults', $data);
 
