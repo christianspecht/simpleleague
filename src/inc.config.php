@@ -48,6 +48,9 @@ Class Settings {
     // properties for headline row in each table
     public $html_table_headline_properties = "style='font-weight:bold;'";
     
+    // row height for "all games from all seasons" table
+    public $html_allresults_cell_height = "30";
+    
     // CSS background colors for HTML tables
     public $html_bgcolor_win = "lightgreen";
     public $html_bgcolor_loss = "red";

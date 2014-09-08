@@ -1,14 +1,14 @@
 {{{html_header}}}
 <!-- {{generated_by}} -->
 <table{{#html_table_properties}} {{html_table_properties}}{{/html_table_properties}}>
-    <tr align='center'>
+    <tr align='center' height='{{html_allresults_cell_height}}'>
         <td align='left'>{{label_season}}</td>
         {{#seasons}}
         <td{{#colspan}} colspan='{{colspan}}'{{/colspan}}>{{season_name}}</td>
         {{/seasons}}
         <td align='left'>{{label_season}}</td>
     </tr>
-    <tr align='center'>
+    <tr align='center' height='{{html_allresults_cell_height}}'>
         <td align='left'>{{label_round}}</td>
         {{#rounds}}
         <td>{{round_number}}</td>
@@ -16,7 +16,7 @@
         <td align='left'>{{label_round}}</td>
     </tr>
 {{#rows}}
-    <tr align='center'>
+    <tr align='center' height='{{html_allresults_cell_height}}'>
         <td align='left'>{{player_name}}</td>
         {{#results}}
         <td{{#bgcolor}} bgcolor='{{bgcolor}}'{{/bgcolor}}>{{result}}</td>
