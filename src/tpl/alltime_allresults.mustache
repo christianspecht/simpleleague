@@ -1,21 +1,21 @@
 {{{html_header}}}
 <!-- {{generated_by}} -->
 <table{{#html_table_properties}} {{html_table_properties}}{{/html_table_properties}}>
-    <tr>
-        <td>{{label_season}}</td>
+    <tr align='center'>
+        <td align='left'>{{label_season}}</td>
         {{#seasons}}
         <td{{#colspan}} colspan='{{colspan}}'{{/colspan}}>{{season_name}}</td>
         {{/seasons}}
     </tr>
-    <tr>
-        <td>{{label_round}}</td>
+    <tr align='center'>
+        <td align='left'>{{label_round}}</td>
         {{#rounds}}
         <td>{{round_number}}</td>
         {{/rounds}}
     </tr>
 {{#rows}}
-    <tr>
-        <td>{{player_name}}</td>
+    <tr align='center'>
+        <td align='left'>{{player_name}}</td>
         {{#results}}
         <td>{{result}}</td>
         {{/results}}
