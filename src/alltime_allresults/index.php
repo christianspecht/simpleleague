@@ -22,10 +22,13 @@ $query1->execute();
 $players = $query1->fetchAll();
 
 // Query 2: all games from all seasons
-$sql2 = "select g.game_id, s.season_name, s.season_id, r.round_number, g.player1_id, g.player2_id, g.player1_result_id, g.player2_result_id
+$sql2 = "select g.game_id, s.season_name, s.season_id, r.round_number, 
+        g.player1_id, g.player2_id, re1.description_short as result1, re2.description_short as result2
         from games g
         inner join rounds r on g.round_id = r.round_id
         inner join seasons s on r.season_id = s.season_id
+        left join results re1 on g.player1_result_id = re1.result_id
+        left join results re2 on g.player2_result_id = re2.result_id
         where s.no_statistics = 0
         order by s.season_name, s.season_id, r.round_number, g.game_id";
 
@@ -122,6 +125,33 @@ foreach($games as $game) {
 // save the last season
 $current_season['colspan']++;
 $seasons[] = $current_season;
+
+
+// 2. loop the games again, insert results
+foreach($games as $game) {
+
+    foreach($rows as &$row) {
+    
+        if ($game['player1_id'] == $row['player_id'] && $game['player2_id'] != 0) {
+            foreach($row['results'] as &$result) {
+                if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
+                    $result['result'] = $data->label_home_short . $game['result1'];
+                    break;
+                }
+            }
+        }
+        
+        if ($game['player2_id'] == $row['player_id'] && $game['player1_id'] != 0) {
+            foreach($row['results'] as &$result) {
+                if (isset($result['season_id']) && $result['season_id'] == $game['season_id'] && $result['round_number'] == $game['round_number']) {
+                    $result['result'] = $data->label_guest_short . $game['result2'];
+                    break;
+                }
+            }
+        }
+    }
+}
+
 
 $data->seasons = $seasons;
 $data->rounds = $rounds;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2014 at 06:40 PM
+-- Generation Time: Sep 08, 2014 at 05:05 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `results` (
 --
 
 INSERT INTO `results` (`result_id`, `description`, `description_short`) VALUES
+(0, 'Loss', 'L'),
 (1, 'Draw', 'D'),
 (2, 'Win', 'W'),
 (3, 'Major Win', 'M');

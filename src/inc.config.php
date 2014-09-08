@@ -32,7 +32,9 @@ Class Settings {
     public $label_draw = "Draw";
     public $label_etc = "etc.";
     public $label_crosstab_home = "Home";
+    public $label_home_short = "H";
     public $label_crosstab_guest = "Guest";
+    public $label_guest_short = "G";
     public $label_crosstab_wins = " wins";
     // ########################################
     
