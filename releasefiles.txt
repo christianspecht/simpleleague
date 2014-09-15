@@ -2,6 +2,12 @@ readme.md
 license.txt
 db.sql
 src\*.php
+src\alltime_allresults\*
+src\round_results\*
+src\season_crosstab\*
+src\season_players\*
+src\season_ranking\*
+src\season_schedule\*
 src\cache\dummy
 src\Mustache\*
 src\Mustache\Exception\*
