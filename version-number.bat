@@ -1,2 +1,2 @@
 rem Edit this to change the version number
-set VersionNumber=1.0
+set VersionNumber=1.1
