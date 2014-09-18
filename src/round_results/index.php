@@ -81,7 +81,13 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
     
     $data->results = $results;
     
-    echo $tpl->render('round_results', $data);
+    $template = "round_results";
+    if (isset($_GET['custom_template']))
+    {
+        $template = $_GET['custom_template'];
+    }
+    
+    echo $tpl->render($template, $data);
 }
 
 ?>

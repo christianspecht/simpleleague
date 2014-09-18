@@ -89,8 +89,14 @@ if (isset($_GET['season_name']) && isset($_GET['round_number']))
         $rank++;
     }
     
+    $template = "season_ranking";
+    if (isset($_GET['custom_template']))
+    {
+        $template = $_GET['custom_template'];
+    }
+    
     $data->results = $results;
-    echo $tpl->render('season_ranking', $data);
+    echo $tpl->render($template, $data);
 }
 
 ?>

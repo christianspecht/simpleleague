@@ -174,6 +174,20 @@ Example:
 
 <iframe frameborder="1" height="500" src="http://simpleleaguedemo.christianspecht.de/alltime_allresults" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/alltime_allresults/">here</a></iframe>
 
+## Custom templates
+
+You can provide your own templates if you don't like the default ones.
+
+All URLs accept the name of a custom template as an optional parameter:
+
+0. put the template file *(with `.mustache` file extension)* into the `/tpl` folder where the default templates are:
+
+		/tpl/my_template.mustache
+
+0. Append the `custom_template` parameter to the URL:
+
+		&custom_template=my_template
+
 
 ---
 

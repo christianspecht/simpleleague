@@ -83,7 +83,13 @@ if (isset($_GET['season_name']))
         $data->rounds[$lastkey]['games'][] = $tmp;
     }
     
-    echo $tpl->render('season_schedule', $data);
+    $template = "season_schedule";
+    if (isset($_GET['custom_template']))
+    {
+        $template = $_GET['custom_template'];
+    }
+    
+    echo $tpl->render($template, $data);
  }
 
 ?>

@@ -206,6 +206,12 @@ $data->rounds = $rounds;
 $data->rows = $rows;
 $data->resultlist = $resultlist;
 
-echo $tpl->render('alltime_allresults', $data);
+$template = "alltime_allresults";
+if (isset($_GET['custom_template']))
+{
+    $template = $_GET['custom_template'];
+}
+
+echo $tpl->render($template, $data);
 
 ?>

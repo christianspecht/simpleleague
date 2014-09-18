@@ -150,8 +150,14 @@ if (isset($_GET['season_name']))
     $data->players = $players;
     $data->lines = $lines;
     $data->resultlist = $resultlist;
-    
-    echo $tpl->render('season_crosstab', $data);
+
+    $template = "season_crosstab";
+    if (isset($_GET['custom_template']))
+    {
+        $template = $_GET['custom_template'];
+    }
+
+    echo $tpl->render($template, $data);
 }
 
 ?>

@@ -22,8 +22,14 @@ if (isset($_GET['season_name']))
     
     $data = new Settings();
     $data->rows = $query->fetchAll();
+
+    $template = "season_players";
+    if (isset($_GET['custom_template']))
+    {
+        $template = $_GET['custom_template'];
+    }
     
-    echo $tpl->render('season_players', $data);
+    echo $tpl->render($template, $data);
 }
 
 ?>
