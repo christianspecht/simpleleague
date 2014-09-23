@@ -40,6 +40,12 @@ function sort_ranking($a, $b) {
     return $sort;
 }
 
+// sorting function for result lists (the "reference" list below /season_crosstab/ and /alltime_allresults/)
+function sort_resultlist($a, $b) {
+    $sort= $a['sort'] - $b['sort'];
+    return $sort;
+}
+
 
 require 'Mustache/Autoloader.php';
 Mustache_Autoloader::register();

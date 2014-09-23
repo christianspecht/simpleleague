@@ -31,6 +31,7 @@ if (isset($_GET['season_name']))
                 re1.result_id as result1_id, re2.result_id as result2_id,
                 re1.description as result1, re2.description as result2,
                 re1.description_short as result1_short, re2.description_short as result2_short,
+                re1.sort as result1_sort, re2.sort as result2_sort,
                 r.round_number
             from seasons s
             inner join rounds r on s.season_id = r.season_id
@@ -104,6 +105,8 @@ if (isset($_GET['season_name']))
                             $resultlist_new['id'] = $game['result1_id'];
                             $resultlist_new['short'] = $game['result1_short'];
                             $resultlist_new['desc'] = $game['result1'];
+                            $resultlist_new['sort'] = $game['result1_sort'];
+
                             
                         } elseif ($game['result1_id'] == 0 && $game['result2_id'] != 0) {
                             // player 2 (the "guest") wins
@@ -113,6 +116,8 @@ if (isset($_GET['season_name']))
                             $resultlist_new['id'] = $game['result2_id'];
                             $resultlist_new['short'] = $game['result2_short'];
                             $resultlist_new['desc'] = $game['result2'];
+                            $resultlist_new['sort'] = $game['result2_sort'];
+
                             
                         } elseif ($game['result1_id'] != 0 && $game['result2_id'] != 0 && $game['result1_id'] == $game['result2_id']) {
                             // draw
@@ -122,6 +127,8 @@ if (isset($_GET['season_name']))
                             $resultlist_new['id'] = $game['result1_id'];
                             $resultlist_new['short'] = $game['result1_short'];
                             $resultlist_new['desc'] = $game['result1'];
+                            $resultlist_new['sort'] = $game['result1_sort'];
+
                         }
                         
                         // save the result description (only once per result) for the explanation below the cross table
@@ -147,6 +154,8 @@ if (isset($_GET['season_name']))
         }
     }
     
+    usort($resultlist, "sort_resultlist");
+
     $data->players = $players;
     $data->lines = $lines;
     $data->resultlist = $resultlist;

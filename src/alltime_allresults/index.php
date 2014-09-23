@@ -38,7 +38,8 @@ $players = $query1->fetchAll();
 $sql2 = "select g.game_id, s.season_name, s.season_id, r.round_number, r.finished,
         g.player1_id, g.player2_id, g.player1_result_id, g.player2_result_id, 
         re1.description_short as result1, re2.description_short as result2,
-        re1.description as result1_desc, re2.description as result2_desc
+        re1.description as result1_desc, re2.description as result2_desc,
+        re1.sort as result1_sort, re2.sort as result2_sort
         from games g
         inner join rounds r on g.round_id = r.round_id
         inner join seasons s on r.season_id = s.season_id
@@ -162,6 +163,7 @@ foreach($games as $game) {
                         $resultlist_new['id'] = $game['player1_result_id'];
                         $resultlist_new['short'] = $game['result1'];
                         $resultlist_new['desc'] = $game['result1_desc'];
+                        $resultlist_new['sort'] = $game['result1_sort'];
                         
                         break;
                     }
@@ -177,6 +179,7 @@ foreach($games as $game) {
                         $resultlist_new['id'] = $game['player2_result_id'];
                         $resultlist_new['short'] = $game['result2'];
                         $resultlist_new['desc'] = $game['result2_desc'];
+                        $resultlist_new['sort'] = $game['result2_sort'];
                         
                         break;
                     }
@@ -200,6 +203,8 @@ foreach($games as $game) {
         }
     }
 }
+
+usort($resultlist, "sort_resultlist");
 
 $data->seasons = $seasons;
 $data->rounds = $rounds;
