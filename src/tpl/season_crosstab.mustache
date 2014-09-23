@@ -1,7 +1,7 @@
 <style type="text/css">.sl-ct{text-align:center;}</style>
 {{{html_header}}}
 <!-- {{generated_by}} -->
-<table{{#html_table_properties}} {{html_table_properties}}{{/html_table_properties}}>
+<table{{#html_table_properties}} {{html_table_properties}}{{/html_table_properties}}{{#html_crosstab_table_properties}} {{html_crosstab_table_properties}}{{/html_crosstab_table_properties}}>
     <tr bgcolor='{{html_bgcolor_crosstab_headline}}'>
         <td><sub>{{label_home}}</sub>&nbsp;\&nbsp;<sup>{{label_guest}}</sup></td>
         {{#players}}
@@ -12,7 +12,7 @@
     <tr>
         <td bgcolor='{{html_bgcolor_crosstab_headline}}'>{{player_name}}</td>
         {{#results}}
-        <td class='sl-ct'{{#bgcolor}} bgcolor='{{bgcolor}}'{{/bgcolor}}>{{points1}}{{#result}}{{label_point_separator}}{{points2}} ({{result}}{{round_number}}){{/result}}</td>
+        <td class='sl-ct'{{#bgcolor}} bgcolor='{{bgcolor}}'{{/bgcolor}}>{{points1}}{{#result}}{{label_point_separator}}{{points2}}<br>({{result}}{{round_number}}){{/result}}</td>
         {{/results}}
     </tr>
     {{/lines}}
