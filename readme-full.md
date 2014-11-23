@@ -44,6 +44,7 @@ To integrate it with your site, use whatever is provided by the technology your 
 - HTML inline frames
 - [PHP `include`](http://php.net/manual/en/function.include.php) (with [`allow_url_include`](http://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-include) enabled)
 - [Server Side Includes](http://en.wikipedia.org/wiki/Server_Side_Includes)
+- For sites built with [Jekyll](http://jekyllrb.com/): [jQuery and a few include files](http://christianspecht.de/2014/11/23/using-jquery-to-integrate-simpleleague-tables-into-jekyll-sites/)
 
 For example URLs, see below.
 
