@@ -85,7 +85,7 @@ URL:
 
 Example:
 
-<iframe frameborder="1" height="180" src="http://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013">here</a></iframe>
+<iframe frameborder="1" height="180" src="https://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/season_players/?season_name=2013">here</a></iframe>
 
 
 ### Schedule of all rounds and games for a season:
@@ -101,7 +101,7 @@ Optional: To display a single round, pass the round number as the second paramet
 Example:  
 *(without the "round number" parameter)*
 
-<iframe frameborder="1" height="400" src="http://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013">here</a></iframe>
+<iframe frameborder="1" height="400" src="https://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/season_schedule/?season_name=2013">here</a></iframe>
 
 
 ### Results for a single round:
@@ -115,7 +115,7 @@ URL:
 
 Example:
 
-<iframe frameborder="1" height="150" src="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2">here</a></iframe>
+<iframe frameborder="1" height="150" src="https://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/round_results/?season_name=2013&round_number=2">here</a></iframe>
 
 Optional: Append the `show_unfinished` parameter to display results even if the round is still unfinished *(to check results before setting the round to finished)*:
 
@@ -132,7 +132,7 @@ URL:
 
 Example:
 
-<iframe frameborder="1" height="180" src="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2">here</a></iframe>
+<iframe frameborder="1" height="180" src="https://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/season_ranking/?season_name=2013&round_number=2">here</a></iframe>
 
 Optional: Append the `show_unfinished` parameter to display results of unfinished rounds as well *(to check results before setting the round to finished)*:
 
@@ -152,7 +152,7 @@ URL:
 
 Example:
 
-<iframe frameborder="1" height="420" src="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013">here</a></iframe>
+<iframe frameborder="1" height="420" src="https://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/season_crosstab/?season_name=2013">here</a></iframe>
 
 ## Statistics
 
@@ -173,7 +173,7 @@ URL:
 
 Example:
 
-<iframe frameborder="1" height="500" src="http://simpleleaguedemo.christianspecht.de/alltime_allresults" width="100%"><a href="http://simpleleaguedemo.christianspecht.de/alltime_allresults/">here</a></iframe>
+<iframe frameborder="1" height="500" src="https://simpleleaguedemo.christianspecht.de/alltime_allresults" width="100%"><a href="https://simpleleaguedemo.christianspecht.de/alltime_allresults/">here</a></iframe>
 
 ## Custom templates
 
@@ -231,5 +231,5 @@ SimpleLeague is licensed under the MIT License. See [License.txt](https://bitbuc
 
 ### Project Info
 
-<script type="text/javascript" src="http://www.ohloh.net/p/710714/widgets/project_basic_stats.js"></script>  
-<script type="text/javascript" src="http://www.ohloh.net/p/710714/widgets/project_languages.js"></script>
+<script type="text/javascript" src="https://www.ohloh.net/p/710714/widgets/project_basic_stats.js"></script>  
+<script type="text/javascript" src="https://www.ohloh.net/p/710714/widgets/project_languages.js"></script>
