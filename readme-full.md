@@ -1,4 +1,4 @@
-![logo](https://bitbucket.org/christianspecht/simpleleague/raw/tip/img/logo128x128.png)
+![logo](https://raw.githubusercontent.com/christianspecht/simpleleague/master/img/logo128x128.png)
 
 SimpleLeague is a very *(and I mean **very**)* minimalistic tool to display tabular league data *(results, rankings etc.)* in existing websites.
 
@@ -6,9 +6,9 @@ SimpleLeague is a very *(and I mean **very**)* minimalistic tool to display tabu
 
 ## Links
 
-- [Download page](https://bitbucket.org/christianspecht/simpleleague/downloads)
-- [Report a bug](https://bitbucket.org/christianspecht/simpleleague/issues/new)
-- [Main project page on Bitbucket](https://bitbucket.org/christianspecht/simpleleague)
+- [Download page](https://github.com/christianspecht/simpleleague/releases)
+- [Report a bug](https://github.com/christianspecht/simpleleague/issues/new)
+- [Main project page on GitHub](https://github.com/christianspecht/simpleleague)
 
 ---
 
@@ -35,8 +35,8 @@ To install SimpleLeague, just:
 0. Download the current ZIP file from the download page *(see "Links" section above)*
 0. Copy the content of the `src` folder onto your server
 0. Set the permissions of the `cache` subfolder to `777`
-0. Create a new MySQL database and execute the content of [`db.sql`](https://bitbucket.org/christianspecht/simpleleague/src/tip/db.sql) to create the tables
-0. Change the database connection settings in [`inc.config.php`](https://bitbucket.org/christianspecht/simpleleague/src/tip/src/inc.config.php) *(server, database, user and password)*
+0. Create a new MySQL database and execute the content of [`db.sql`](https://github.com/christianspecht/simpleleague/blob/master/db.sql) to create the tables
+0. Change the database connection settings in [`inc.config.php`](https://github.com/christianspecht/simpleleague/blob/master/src/inc.config.php) *(server, database, user and password)*
 0. *Optional: Edit the other constants in the config file if you want to edit the terminology used in the table headers (like **Player**, **Season** and so on).*
 
 To integrate it with your site, use whatever is provided by the technology your site was built with, for example:
@@ -44,7 +44,7 @@ To integrate it with your site, use whatever is provided by the technology your 
 - HTML inline frames
 - [PHP `include`](http://php.net/manual/en/function.include.php) (with [`allow_url_include`](http://www.php.net/manual/en/filesystem.configuration.php#ini.allow-url-include) enabled)
 - [Server Side Includes](http://en.wikipedia.org/wiki/Server_Side_Includes)
-- For sites built with [Jekyll](http://jekyllrb.com/): [jQuery and a few include files](http://christianspecht.de/2014/11/23/using-jquery-to-integrate-simpleleague-tables-into-jekyll-sites/)
+- For sites built with [Jekyll](http://jekyllrb.com/): [jQuery and a few include files](https://christianspecht.de/2014/11/23/using-jquery-to-integrate-simpleleague-tables-into-jekyll-sites/)
 
 For example URLs, see below.
 
@@ -72,7 +72,7 @@ Think of the way scores in sports leagues work: the actual game result is someth
 
 ---
 
-You can use [this SQL script](https://bitbucket.org/christianspecht/simpleleague/src/tip/db_sample_data.sql) to create a database with sample data.
+You can use [this SQL script](https://github.com/christianspecht/simpleleague/blob/master/db_sample_data.sql) to create a database with sample data.
 
 Here is a list of the available URLs, with examples how the rendered tables look like.  
 The example tables use the sample data from the script above.
@@ -225,11 +225,11 @@ SimpleLeague makes use of the following open source projects:
 
 ### License
 
-SimpleLeague is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/simpleleague/src/tip/license.txt) for details.
+SimpleLeague is licensed under the MIT License. See [License.txt](https://raw.githubusercontent.com/christianspecht/simpleleague/master/license.txt) for details.
 
 ---
 
 ### Project Info
 
-<script type="text/javascript" src="https://www.ohloh.net/p/710714/widgets/project_basic_stats.js"></script>  
-<script type="text/javascript" src="https://www.ohloh.net/p/710714/widgets/project_languages.js"></script>
+<script type='text/javascript' src='https://www.openhub.net/p/simpleleague/widgets/project_basic_stats?format=js'></script>
+<script type='text/javascript' src='https://www.openhub.net/p/simpleleague/widgets/project_languages?format=js'></script>
